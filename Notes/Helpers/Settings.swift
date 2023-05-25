@@ -23,7 +23,6 @@ public final class SettingsSingletone{
     func setTheme(theme:Int){
         defaults.set(theme, forKey: "Theme")
         colorTheme = defaults.integer(forKey: "Theme")
-        
     }
     func getTheme() -> Int{
         defaults.integer(forKey: "Theme")

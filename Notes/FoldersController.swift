@@ -14,7 +14,6 @@ class FoldersController: UIViewController{
     var folders:[Folder] = []
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        configure()
     }
     
     required init?(coder: NSCoder) {
@@ -56,10 +55,6 @@ class FoldersController: UIViewController{
         }
     }
 
-
-    
-    private func configure(){
-    }
     @objc private func buttonTouched() {
         let alert = UIAlertController(title: "Add Folder", message: "Enter a name", preferredStyle: .alert)
         alert.addTextField { (textField) in

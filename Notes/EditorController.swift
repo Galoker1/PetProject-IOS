@@ -15,7 +15,6 @@ class EditorController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textField.delegate = self
         view.addSubview(textField)
         textField.text = CoreDataManager.shared.fetchNote(id: noteId ?? 0)?.text
         configure()
@@ -51,6 +50,7 @@ class EditorController: UIViewController{
         self.view.endEditing(true)
         textField.resignFirstResponder()
     }
+    
     func setColors(){
         if SettingsSingletone.shared.getTheme() == 0{
             view.overrideUserInterfaceStyle = .dark
@@ -63,6 +63,7 @@ class EditorController: UIViewController{
             self.navigationController?.navigationBar.barTintColor = .white
         }
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.setColors()
         textField.font = UIFont.systemFont(ofSize: CGFloat(SettingsSingletone.shared.getFontSize()))
@@ -79,8 +80,4 @@ class EditorController: UIViewController{
     }
 }
 
-extension EditorController: UITextViewDelegate{
-    func textViewDidEndEditing(_ textView: UITextView) {
-        
-    }
-}
+

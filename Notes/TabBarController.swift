@@ -22,6 +22,7 @@ final class TabBarController: UITabBarController{
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     private func configure(){
         tabBar.tintColor = Resources.Colors.accent
         let notesController = FoldersController()
@@ -41,14 +42,9 @@ final class TabBarController: UITabBarController{
     
     func setColors(){
         if SettingsSingletone.shared.getTheme() == 0{
-            /*self.view.backgroundColor = .black
-            self.view.tintColor = .darkGray
-            self.themeLabel.tintColor = .white
-            self.fontSizeLabel.tintColor = .white*/
             view.overrideUserInterfaceStyle = .dark
         }
-        else{/*
-            self.view.backgroundColor = .white*/
+        else{
             view.overrideUserInterfaceStyle = .light
         }
     }

@@ -21,6 +21,7 @@ public final class CoreDataManager: NSObject{
     private var context:NSManagedObjectContext{
         appDelegate.persistentContainer.viewContext
     }
+    // Создание папки
     public func createFolder(name:String){
         var id: Int16 = 0
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Folder")
@@ -43,6 +44,8 @@ public final class CoreDataManager: NSObject{
         //note.lastEditing = NSDate() as Date
         appDelegate.saveContext()
         }
+    
+    // Все папки
     public func fetchFolders() ->[Folder]{
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Folder")
         do{
@@ -51,6 +54,8 @@ public final class CoreDataManager: NSObject{
             
         }
     }
+    
+    // Изменение папки
     public func updateFolder(id: Int16, name:String){
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Folder")
         do{
@@ -61,6 +66,7 @@ public final class CoreDataManager: NSObject{
         appDelegate.saveContext()
     }
     
+    // Удаление всех папок
     public func deleteAllFolders(){
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Folder")
         do{
@@ -69,6 +75,7 @@ public final class CoreDataManager: NSObject{
         }
         appDelegate.saveContext()
     }
+    // Удаление всех заметок
     public func deleteAllNotes(){
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
         do{
@@ -78,6 +85,7 @@ public final class CoreDataManager: NSObject{
         appDelegate.saveContext()
     }
     
+    // Удаление папки
     public func deleteFolder(id:Int16){
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Folder")
         do{
@@ -87,6 +95,8 @@ public final class CoreDataManager: NSObject{
         }
         appDelegate.saveContext()
     }
+    
+    // Удаление заметки
     public func deleteNote(id:Int16){
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
         do{
@@ -97,6 +107,7 @@ public final class CoreDataManager: NSObject{
         appDelegate.saveContext()
     }
     
+    // Удаление заметки по ID
     public func deleteNotesByFolder(id:Int16){
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
         do{
@@ -109,6 +120,7 @@ public final class CoreDataManager: NSObject{
         appDelegate.saveContext()
     }
     
+    // Создание Заметки
     public func createNote(folderId: Int16) -> Int16{
         var id: Int16 = 0
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
@@ -134,6 +146,8 @@ public final class CoreDataManager: NSObject{
         appDelegate.saveContext()
         return id
         }
+    
+    // Все заметки из папки
     public func fetchNotes(folderId: Int16) ->[Note]{
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
         do{
@@ -143,6 +157,8 @@ public final class CoreDataManager: NSObject{
         }
        
     }
+    
+    // Получение заметки
     public func fetchNote(id: Int16) -> Note?{
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
         do{
@@ -152,6 +168,8 @@ public final class CoreDataManager: NSObject{
         }
        
     }
+    
+    // Изменение заметки
     public func updateNote(id: Int16, text:String){
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
         do{
